@@ -1,3 +1,6 @@
+# Pyhon 
+
+```
 from math import *
 ###########################creation de la classe ###################
 
@@ -55,3 +58,5 @@ comparaisonDist(trajet1,trajet2)
 
 ##distance(Ville3,Ville4)
 ##distance(Ville1,Ville2)
+
+```
