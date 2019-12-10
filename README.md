@@ -15,7 +15,7 @@ class villes():
         print("coordonné en x", self.ab)
         print("coordonné en y", self.ord)
         
-######## distance + dist totale #################
+######## autres foncions  #################
 def distance(Ville1,Ville2):
     dist= round(sqrt((Ville1.ab-Ville2.ab)**2 + (Ville1.ord-Ville2.ord)**2),1)
     print("distance ente ces 2 villes vaut:",dist)
@@ -27,6 +27,13 @@ def totalDistance(Ville1,Ville2,Ville3):
     total= dist1 + dist2 + dist3
     print("total de la distance est:",total)
     return total
+
+def comparaisonDist(total1,total2):
+    if(total1<total2):
+        print("le plus optimal est:",total1)
+    else:
+        print("le plus optimal est:",total2)
+
 
 ################## création  des villes ######################
 Ville1 = villes("paris",2,3)
