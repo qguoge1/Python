@@ -20,7 +20,7 @@ class villes():
 
 def distance(Ville1,Ville2):
     dist= round(sqrt((Ville1.ab-Ville2.ab)**2 + (Ville1.ord-Ville2.ord)**2),1)
-    print("distance ente ces 2 villes vaut:",dist)
+    print("distance ",Ville1.nom_ville,Ville2.nom_ville,"est:",dist)
 
 def totalDistance(Ville1,Ville2,Ville3,Ville4):
     dist1= round(sqrt((Ville1.ab-Ville2.ab)**2 + (Ville1.ord-Ville2.ord)**2),1)
@@ -35,6 +35,8 @@ def comparaisonDist(total1,total2):
         print("le plus optimal est:",total1)
     else:
         print("le plus optimal est:",total2)
+
+
 
 #########################################################
 
@@ -56,7 +58,8 @@ trajet2=totalDistance(Ville3,Ville4,Ville2, Ville1)
 comparaisonDist(trajet1,trajet2)
 
 
-##distance(Ville3,Ville4)
+distance(Ville3,Ville4)
 ##distance(Ville1,Ville2)
+
 
 ```
