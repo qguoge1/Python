@@ -1,8 +1,6 @@
-# Python
-
-```
 from math import *
-################ création de la classe ville #################
+###########################creation de la classe ###################
+
 class villes():
 
     def __init__(self, nom, x, y):
@@ -14,13 +12,14 @@ class villes():
         print("la ville est:",self.nom_ville)
         print("coordonné en x", self.ab)
         print("coordonné en y", self.ord)
-        
-######## autres foncions  #################
+
+##################autres fonctions ###########################
+
 def distance(Ville1,Ville2):
     dist= round(sqrt((Ville1.ab-Ville2.ab)**2 + (Ville1.ord-Ville2.ord)**2),1)
     print("distance ente ces 2 villes vaut:",dist)
 
-def totalDistance(Ville1,Ville2,Ville3):
+def totalDistance(Ville1,Ville2,Ville3,Ville4):
     dist1= round(sqrt((Ville1.ab-Ville2.ab)**2 + (Ville1.ord-Ville2.ord)**2),1)
     dist2= round(sqrt((Ville2.ab-Ville3.ab)**2 + (Ville2.ord-Ville3.ord)**2),1)
     dist3= round(sqrt((Ville3.ab-Ville1.ab)**2 + (Ville3.ord-Ville1.ord)**2),1)
@@ -34,8 +33,8 @@ def comparaisonDist(total1,total2):
     else:
         print("le plus optimal est:",total2)
 
+#########################################################
 
-################## création  des villes ######################
 Ville1 = villes("paris",2,3)
 Ville1.resume()
 
@@ -49,8 +48,10 @@ Ville3.resume()
 Ville4 = villes("dubaï",1,1)
 Ville4.resume()
 
-totalDistance(Ville2,Ville3,Ville4) 
+trajet1=totalDistance(Ville1,Ville2,Ville3,Ville4)
+trajet2=totalDistance(Ville3,Ville4,Ville2, Ville1)
+comparaisonDist(trajet1,trajet2)
+
+
 ##distance(Ville3,Ville4)
 ##distance(Ville1,Ville2)
-
-```
