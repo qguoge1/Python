@@ -2,7 +2,7 @@
 
 ```
 from math import *
-
+################ création de la classe ville #################
 class villes():
 
     def __init__(self, nom, x, y):
@@ -14,7 +14,8 @@ class villes():
         print("la ville est:",self.nom_ville)
         print("coordonné en x", self.ab)
         print("coordonné en y", self.ord)
-
+        
+######## distance + dist totale #################
 def distance(Ville1,Ville2):
     dist= round(sqrt((Ville1.ab-Ville2.ab)**2 + (Ville1.ord-Ville2.ord)**2),1)
     print("distance ente ces 2 villes vaut:",dist)
@@ -27,6 +28,7 @@ def totalDistance(Ville1,Ville2,Ville3):
     print("total de la distance est:",total)
     return total
 
+################## création  des villes ######################
 Ville1 = villes("paris",2,3)
 Ville1.resume()
 
