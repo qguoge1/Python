@@ -2,6 +2,8 @@
 
 ```
 from math import *
+from random import *
+
 ###########################creation de la classe ###################
 
 class villes():
@@ -35,6 +37,7 @@ def comparaisonDist(total1,total2):
         print("le plus optimal est:",total1)
     else:
         print("le plus optimal est:",total2)
+        
 
 
 
@@ -56,6 +59,8 @@ Ville4.resume()
 trajet1=totalDistance(Ville1,Ville2,Ville3,Ville4)
 trajet2=totalDistance(Ville3,Ville4,Ville2, Ville1)
 comparaisonDist(trajet1,trajet2)
+
+l_ville=[Ville1,Ville2,Ville3,Ville4]
 
 
 distance(Ville3,Ville4)
