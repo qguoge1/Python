@@ -144,18 +144,18 @@ class cVilles:
         print("Latitude :",self.y)
 
 def Calculer_distance(Ville1,Ville2,Liste):
-    distance = round(sqrt( abs((Ville1.x-Ville2.x)**2 + (Ville1.y-Ville2.y)**2)),1)
-    print("La distance qui sépare ",Ville1.name, Ville2.name, "est de :", distance)
-    Liste.append(distance)
-    
-Liste = []    
-NvListe = [999999999]
+    distance = round(sqrt( abs((Ville1.x-Ville2.x)**2 + (Ville1.y-Ville2.y)**2)),1)     #Formule de maths...
+    #print("La distance qui sépare ",Ville1.name, Ville2.name, "est de :", distance)     # print pour les tests 
+    Liste.append(distance)                      # On rajoute la distance calculée dans une "liste"
+        
+Liste = []                      # Liste pour stocker les distances  (On utilisera une fonction "sum()"
+NvListe = [999999999]           # Liste pour stocker la distance la plus petite ( on initialise une valeur très grande pour la                                           # comparaison)
 
 
-count= 0
-Nb_Villes = 9
-count1 = 0
-Ville1 = cVilles("Paris",5,8)
+count= 0            #Compteur pour compter les trajets effectués
+Nb_Villes = 9           # Variables pour les nombres de villes
+count1 = 0              # Pour compter le nombre d'itérations que l'on teste
+Ville1 = cVilles("Paris",5,8)       # Déclarations des villes pour tester 
 Ville2 = cVilles("Bordeaux",2,2)
 Ville3 = cVilles("Alsace",9,5)
 Ville4 = cVilles("Marseille",5,2)
@@ -165,23 +165,23 @@ Ville7 = cVilles("Bourgogne",5,6)
 Ville8 = cVilles("Champagne",5,7)
 Ville9 = cVilles("Toulouse",2,3)
 
-ListeVille = [Ville1,Ville2,Ville3,Ville4,Ville5,Ville6,Ville7,Ville8,Ville9]
+ListeVille = [Ville1,Ville2,Ville3,Ville4,Ville5,Ville6,Ville7,Ville8,Ville9]       # Liste qui stocke les villes, il permet de                                                                         # "mélanger"(shuffle()) l'ordre des villes
 
 
 
-while count1< 2:
-    random.shuffle(ListeVille)
-    while(count< Nb_Villes-1):
-        Calculer_distance(ListeVille[count],ListeVille[count+1],Liste) 
-        count += 1
-    if(sum(Liste)< sum(NvListe)):
-        NvListe = deepcopy(Liste)
-    Liste = []
-    count1 = count1 + 1
-    count=0
+while count1< 2:            # Boucle qui permet de générer des trajets différents
+    random.shuffle(ListeVille)          #Le mélangeur de liste
+    while(count< Nb_Villes-1):                  # Boucle qui calcule la distance totale pour le trajet
+        Calculer_distance(ListeVille[count],ListeVille[count+1],Liste)      # Calcule la distance entre villes stockées dans ListeVille
+        count += 1                     
+    if(sum(Liste)< sum(NvListe)):               # Comparaison, NvListe prend la valeur de Liste si sa distance est plus petite
+        NvListe = deepcopy(Liste)                   #deepcopy pour éviter des problèmes
+    Liste = []              # On vide la liste avant de refaire le calcul des distances
+    count1 = count1 + 1         # On incrémente le compteur de la grande boucle 
+    count=0                         # On réinitialise le compteur de la petite boucle (Sinon il calcule qu'un trajet)
     
-distance_finale = sum(NvListe)
-print(distance_finale)
+distance_finale = sum(NvListe)      # La distance_finale est la somme des distances calculée
+print(distance_finale)                  # affichage du résultat
 
     
 
