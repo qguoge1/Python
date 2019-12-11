@@ -186,3 +186,134 @@ print(distance_finale)                  # affichage du résultat
     
 
 ```
+- Hypothèses (Intégration Classe + Génération des trajets aléatoires)
+```python
+from math import *
+from copy import *
+import random
+
+class cVilles:
+    def __init__ (self,name,x,y):
+        self.name = name
+        self.x = x
+        self.y = y
+        
+    def Afficher_infos(self):
+        print("Nom :",self.name)
+        print("Longitude :",self.x)
+        print("Latitude :",self.y)
+
+
+
+class cTrajet:
+    def __init__ (self,name,distance=[],trajet= {},coordonnee={}):
+        self.name = name
+        self.distance = distance
+        self.trajet = trajet
+        self.coordonnee = coordonnee
+
+    def Definir_trajet(self, Nb_villes):
+        count = 0
+        liste_trajet = []
+        self.trajet = {}
+        while(count< Nb_Villes):                  
+            self.trajet["Ville" + str(count+1)] = cVilles(str(input("Nom de la ville " + str(count+1) + "\n")),int(input("Entrez x : \n")),int(input("Entrez y : \n")))
+            liste_trajet.append(self.trajet["Ville"+str(count+1)].name)
+            count += 1
+        print(liste_trajet)
+    def Calculer_distance(self):
+        distance_totale = []
+        count = 0
+        while(count< Nb_Villes-1):                  
+            distance = round(sqrt( abs((self.trajet["Ville"+str(count+1)].x-self.trajet["Ville"+str(count+2)].x)**2 + (self.trajet["Ville"+str(count+1)].y-self.trajet["Ville"+str(count+2)].y)**2)),1)     #Formule de maths...
+            #print("La distance qui sépare ",Ville1.name, Ville2.name, "est de :", distance)     # print pour les tests 
+            distance_totale.append(distance)
+            count += 1
+        print("La distance totale est de : ", sum(distance_totale))
+
+
+def Génération_trajet :
+    Nb_trajet = int(input("Entrez le nombre de trajets aléatoire à générer (Moins de 5 pour l'instant svp)"))
+    count = 0
+    Nb_Villes = int(input("Entrez le nombre de villes : "))
+    Trajet = {}
+    while(count< Nb_trajet):
+        Trajet["Trajet"+str(count+1)] = cTrajet("Trajet"+str(count+1))
+        
+        Trajet["Trajet"+str(count+1)].Definir_trajet(Nb_Villes)
+        count += 1
+
+
+
+
+
+Trajet1.Calculer_distance()
+```
+- Marche mais il faut optimiser la déclaration des villes :
+```Python
+from math import *
+from copy import *
+import random
+
+class cVilles:
+    def __init__ (self,name,x,y):
+        self.name = name
+        self.x = x
+        self.y = y
+        
+    def Afficher_infos(self):
+        print("Nom :",self.name)
+        print("Longitude :",self.x)
+        print("Latitude :",self.y)
+
+
+
+class cTrajet:
+    def __init__ (self,name,distance=0,trajet= {},coordonnee={}):
+        self.name = name
+        self.distance = distance
+        self.trajet = trajet
+        self.coordonnee = coordonnee
+
+    def Definir_trajet(self, Nb_Villes):
+        count = 0
+        
+        liste_trajet = []
+        self.trajet = {}
+        while(count< Nb_Villes):                  
+            self.trajet["Ville" + str(count+1)] = cVilles(str(input("Nom de la ville " + str(count+1) + "\n")),int(input("Entrez x : \n")),int(input("Entrez y : \n")))
+            liste_trajet.append(self.trajet["Ville"+str(count+1)].name)
+            count += 1
+        print(liste_trajet)
+        
+    def Calculer_distance(self,Nb_Villes):
+        distance_totale = []
+        count = 0
+        while(count< Nb_Villes-1):                  
+            distance = round(sqrt( abs((self.trajet["Ville"+str(count+1)].x-self.trajet["Ville"+str(count+2)].x)**2 + (self.trajet["Ville"+str(count+1)].y-self.trajet["Ville"+str(count+2)].y)**2)),1)     #Formule de maths...
+            #print("La distance qui sépare ",Ville1.name, Ville2.name, "est de :", distance)     # print pour les tests 
+            distance_totale.append(distance)
+            self.distance = sum(distance_totale)
+            count += 1
+        print("La distance totale est de : ", self.distance)
+
+
+def Generation_trajet () :
+    Nb_trajet = int(input("Entrez le nombre de trajets aléatoire à générer (Moins de 5 pour l'instant svp)"))
+    count = 0
+    Nb_Villes = int(input("Entrez le nombre de villes : "))
+    Trajet = {}
+    while(count< Nb_trajet):
+        Trajet["Trajet"+str(count+1)] = cTrajet("Trajet"+str(count+1))
+        
+        Trajet["Trajet"+str(count+1)].Definir_trajet(Nb_Villes)
+        Trajet["Trajet"+str(count+1)].Calculer_distance(Nb_Villes)
+        count += 1
+
+
+
+Generation_trajet()
+
+
+
+```
