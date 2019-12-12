@@ -478,3 +478,89 @@ def Generation_trajet () :
 
 Generation_trajet()
 ```
+ma keh ( sans génétique):
+``python
+from math import *
+from copy import *
+import random
+
+class cVilles:
+    def __init__ (self,name,x,y):
+        self.name = name
+        self.x = x
+        self.y = y
+        
+    def Afficher_infos(self):
+        print("Nom :",self.name)
+        print("Longitude :",self.x)
+        print("Latitude :",self.y)
+
+
+
+class cTrajet:
+    def __init__ (self,name,distance=0,trajet= [], villes = {}):
+        self.name = name
+        self.distance = distance
+        self.trajet = trajet
+        self.villes = villes
+    def Definir_Villes(self,Nb_Villes):
+        count = 0
+        while(count< Nb_Villes):
+            self.villes["Ville" + str(count+1)] = cVilles(str(input("Nom de la ville " + str(count+1) + "\n")),int(input("Entrez x : \n")),int(input("Entrez y : \n")))
+            count += 1  
+    def Definir_trajet(self, Nb_Villes):
+        count = 0
+
+        self.trajet = []
+        while(count< Nb_Villes):
+            self.trajet.append(self.villes["Ville"+str(count+1)])
+            print(self.trajet)
+            count += 1
+
+        print("before", self.trajet)    
+        random.shuffle(self.trajet)
+        print("after", self.trajet)
+        print("Le trajet effectué sera : \n")
+
+        count = 0
+        while(count< Nb_Villes):                  
+            print(self.trajet[count].name)
+            count += 1
+        
+    def Calculer_distance(self,Nb_Villes):
+        distance_totale = []
+        count = 0
+        while(count< Nb_Villes-1):                  
+            distance = round(sqrt(abs((self.trajet[count].x-self.trajet[count+1].x)**2 + (self.trajet[count].y-self.trajet[count+1].y)**2)),1)     #Formule de maths...
+          #  print("La distance qui sépare ",self.trajet[count].name, self.trajet[count+1].name, "est de :", distance)     
+            distance_totale.append(distance)
+            self.distance = sum(distance_totale)
+            count += 1
+        print("La distance totale est de : ", self.distance)
+    def meilleur_trajet
+
+def Generation_trajet () :
+    Nb_trajet = int(input("Entrez le nombre de trajets aléatoire à générer (Moins de 5 pour l'instant svp)"))
+    count = 0
+    Nb_Villes = int(input("Entrez le nombre de villes : "))
+    Trajet = {}
+    while(count< Nb_trajet):            # Crée les variables trajets dans un dictionnaire   Ils seront notés Trajet["Trajet1"], Trajet["Trajet2"]
+        Trajet["Trajet"+str(count+1)] = cTrajet("Trajet"+str(count+1))
+        count += 1
+    Trajet["Trajet1"].Definir_Villes(Nb_Villes) #On défini les villes pour le premier trajet pour pouvoir directement les mélanger ensuite sans les redéclarer
+
+
+    count = 0  
+    while(count< Nb_trajet):            # Crée les variables trajets dans un dictionnaire   Ils seront notés Trajet["Trajet1"], Trajet["Trajet2"]
+        Trajet["Trajet"+str(count+1)].villes =  deepcopy(Trajet["Trajet1"].villes)          # On évite de redéclarer les villes à chaque fois
+
+        Trajet["Trajet"+str(count+1)].Definir_trajet(Nb_Villes)
+       # print("in gnerqaion_trajt" ,[[Trajet["Trajet"+str(i+1)].trajet[j].name for i in range(Nb_trajet)] for j in range(Nb_trajet)])         Trajet["Trajet"+str(count+1)].Calculer_distance(Nb_Villes)
+        count += 1
+
+
+
+
+
+Generation_trajet()
+```
