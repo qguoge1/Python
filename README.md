@@ -479,7 +479,7 @@ def Generation_trajet () :
 Generation_trajet()
 ```
 ma keh ( sans génétique):
-``python
+```python
 from math import *
 from copy import *
 import random
